@@ -16,22 +16,32 @@ public class MonsterController
 	public void start()
 	{
 		MarshmallowMonster sample = new MarshmallowMonster();
-		System.out.println(sample);
+//		System.out.println(sample);
+		popup.displayText(sample.toString());
 		MarshmallowMonster realMonster = new MarshmallowMonster("Good Ol' NoName", 8, 1, 4.5, true);
 		
-		System.out.println(realMonster);
-		System.out.println("Preston is hungry, so he is going to eat a tentacle");
+//		System.out.println(realMonster);
+		popup.displayText(realMonster.toString());
+//		System.out.println("Preston is hungry, so he is going to eat a tentacle");
+		popup.displayText("Preston is hungry, so he is going to eat a tentacle");
 		realMonster.setTentacleAmount(3.5);
-		System.out.println(realMonster);
-		
+//		System.out.println(realMonster);
+		popup.displayText(realMonster.toString());
 		interactWithTheMonster(realMonster);
 	}
 
 	private void interactWithTheMonster(MarshmallowMonster currentMonster)
 	{
-		System.out.println(currentMonster.getName() + " wants to know what to eat next");
-		System.out.println(currentMonster.getName() + " suggests arms, they have " + currentMonster.getArmCount());
-		System.out.println("How many do you want to eat?");
+//		System.out.println(currentMonster.getName() + " wants to know what to eat next");
+		popup.displayText(currentMonster.getName() + " wants to know what to eat next");
+//		System.out.println(currentMonster.getName() + " suggests arms, they have " + currentMonster.getArmCount());
+		popup.displayText(currentMonster.getName() + " suggests arms, they have " + currentMonster.getArmCount());
+//		System.out.println("How many do you want to eat?");
+		int specialAnswer;
+		String unconverted = popup.getResponse("How many do you want to eat?");
+		
+		specialAnswer = Integer.parseInt(unconverted);
+				
 		Scanner myScanner = new Scanner(System.in);
 		int consumed = myScanner.nextInt();
 		
@@ -65,5 +75,11 @@ public class MonsterController
 			currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
 			System.out.println("Thanks! I only have this many eyes now: " + currentMonster.getEyeCount());
 		}
+		
+		popup.displayText("Hey look at me!!!!");
+		String answer = popup.getResponse("How many meals are you eating today");
+		System.out.println(answer);
+		popup.displayText(answer);
+		
 	}
 }
